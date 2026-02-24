@@ -1,0 +1,72 @@
+{
+    "common": {
+        "backToHome": "กลับหน้าหลัก"
+    },
+    "landing": {
+        "brand": "Demo Project",
+        "login": "เข้าสู่ระบบ",
+        "register": "สมัครสมาชิก",
+        "badge": "สภาพแวดล้อมสาธิตสำหรับการเรียนรู้",
+        "headline": "แอปพลิเคชันสาธิตสำหรับฝึกและเรียนรู้",
+        "description": "โปรเจกต์นี้เป็นระบบสาธิตที่จัดทำขึ้นเพื่อการเรียนรู้ ทดสอบฟีเจอร์ และฝึกการเชื่อมต่อ Frontend กับ Backend",
+        "ctaPrimary": "ทดลองใช้งานระบบ",
+        "ctaSecondary": "ดูตัวอย่างฟีเจอร์",
+        "note": "ระบบนี้จัดทำขึ้นเพื่อการศึกษาและสาธิตเท่านั้น",
+        "langLabel": "ภาษาไทย"
+    },
+    "auth": {
+        "login": {
+            "title": "เข้าสู่ระบบ",
+            "emailLabel": "ชื่อผู้ใช้ / อีเมล",
+            "emailPlaceholder": "ชื่อผู้ใช้ / อีเมล",
+            "passwordLabel": "รหัสผ่าน",
+            "passwordPlaceholder": "รหัสผ่าน",
+            "forgotPassword": "ลืมรหัสผ่าน ?",
+            "submit": "เข้าสู่ระบบ",
+            "submitting": "กำลังเข้าสู่ระบบ…",
+            "noAccount": "ยังไม่มีบัญชี?",
+            "registerLink": "สมัครสมาชิก",
+            "showPassword": "แสดงรหัสผ่าน",
+            "hidePassword": "ซ่อนรหัสผ่าน",
+            "errors": {
+                "emailRequired": "กรุณากรอกชื่อผู้ใช้หรืออีเมล",
+                "emailPattern": "รูปแบบอีเมลไม่ถูกต้อง",
+                "passwordRequired": "กรุณากรอกรหัสผ่าน",
+                "passwordMin": "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร",
+                "serverError": "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
+            }
+        },
+        "register": {
+            "title": "สมัครสมาชิก",
+            "firstNameLabel": "ชื่อ",
+            "firstNamePlaceholder": "ชื่อจริง",
+            "lastNameLabel": "นามสกุล",
+            "lastNamePlaceholder": "นามสกุล",
+            "emailLabel": "อีเมล",
+            "emailPlaceholder": "อีเมลของคุณ",
+            "passwordLabel": "รหัสผ่าน",
+            "passwordPlaceholder": "อย่างน้อย 8 ตัวอักษร",
+            "confirmPasswordLabel": "ยืนยันรหัสผ่าน",
+            "confirmPasswordPlaceholder": "กรอกรหัสผ่านอีกครั้ง",
+            "submit": "สมัครสมาชิก",
+            "submitting": "กำลังสมัคร…",
+            "hasAccount": "มีบัญชีอยู่แล้ว?",
+            "loginLink": "เข้าสู่ระบบ",
+            "showPassword": "แสดงรหัสผ่าน",
+            "hidePassword": "ซ่อนรหัสผ่าน",
+            "errors": {
+                "firstNameRequired": "กรุณากรอกชื่อจริง",
+                "firstNameMin": "ชื่อต้องมีอย่างน้อย 2 ตัวอักษร",
+                "lastNameRequired": "กรุณากรอกนามสกุล",
+                "lastNameMin": "นามสกุลต้องมีอย่างน้อย 2 ตัวอักษร",
+                "emailRequired": "กรุณากรอกอีเมล",
+                "emailPattern": "รูปแบบอีเมลไม่ถูกต้อง",
+                "passwordRequired": "กรุณากรอกรหัสผ่าน",
+                "passwordMin": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+                "confirmRequired": "กรุณายืนยันรหัสผ่าน",
+                "confirmMatch": "รหัสผ่านไม่ตรงกัน",
+                "serverError": "ไม่สามารถสมัครสมาชิกได้ อีเมลนี้อาจถูกใช้งานแล้ว"
+            }
+        }
+    }
+}

@@ -1,0 +1,72 @@
+{
+    "common": {
+        "backToHome": "Back to home"
+    },
+    "landing": {
+        "brand": "Demo Project",
+        "login": "Log in",
+        "register": "Get started",
+        "badge": "Learning Demo Environment",
+        "headline": "Demo Application for Practice & Learning",
+        "description": "This project is a demonstration system created for learning, testing features, and practicing frontend and backend integration.",
+        "ctaPrimary": "Try the system",
+        "ctaSecondary": "See features",
+        "note": "This system is for educational and demonstration purposes only.",
+        "langLabel": "English"
+    },
+    "auth": {
+        "login": {
+            "title": "Log In",
+            "emailLabel": "Username / Email",
+            "emailPlaceholder": "Username / Email",
+            "passwordLabel": "Password",
+            "passwordPlaceholder": "Password",
+            "forgotPassword": "Forgot password?",
+            "submit": "Log In",
+            "submitting": "Signing in…",
+            "noAccount": "Don't have an account?",
+            "registerLink": "Sign up",
+            "showPassword": "Show password",
+            "hidePassword": "Hide password",
+            "errors": {
+                "emailRequired": "Please enter your username or email",
+                "emailPattern": "Invalid email format",
+                "passwordRequired": "Please enter your password",
+                "passwordMin": "Password must be at least 6 characters",
+                "serverError": "Invalid username or password"
+            }
+        },
+        "register": {
+            "title": "Create Account",
+            "firstNameLabel": "First Name",
+            "firstNamePlaceholder": "First name",
+            "lastNameLabel": "Last Name",
+            "lastNamePlaceholder": "Last name",
+            "emailLabel": "Email",
+            "emailPlaceholder": "Your email",
+            "passwordLabel": "Password",
+            "passwordPlaceholder": "At least 8 characters",
+            "confirmPasswordLabel": "Confirm Password",
+            "confirmPasswordPlaceholder": "Re-enter password",
+            "submit": "Create Account",
+            "submitting": "Creating…",
+            "hasAccount": "Already have an account?",
+            "loginLink": "Log in",
+            "showPassword": "Show password",
+            "hidePassword": "Hide password",
+            "errors": {
+                "firstNameRequired": "Please enter your first name",
+                "firstNameMin": "First name must be at least 2 characters",
+                "lastNameRequired": "Please enter your last name",
+                "lastNameMin": "Last name must be at least 2 characters",
+                "emailRequired": "Please enter your email",
+                "emailPattern": "Invalid email format",
+                "passwordRequired": "Please enter a password",
+                "passwordMin": "Password must be at least 8 characters",
+                "confirmRequired": "Please confirm your password",
+                "confirmMatch": "Passwords do not match",
+                "serverError": "Could not create account. This email may already be in use."
+            }
+        }
+    }
+}
