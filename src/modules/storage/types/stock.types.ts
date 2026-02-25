@@ -85,6 +85,11 @@ export interface Shelf {
   quantity: number
   createdAt: string
   updatedAt: string
+  medicineSnapshot: {
+    medicineCode: string | null
+    medicineName_en: string | null
+    medicineName_th: string | null
+  }
 }
 
 export interface CreateShelfPayload {

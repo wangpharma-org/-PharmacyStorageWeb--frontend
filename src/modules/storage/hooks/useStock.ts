@@ -7,11 +7,13 @@ import type {
   CreateShelfPayload, UpdateShelfPayload, FindShelvesParams,
 } from "../types/stock.types"
 
-// ─── Rooms ───────────────────────────────────────────────────────
+
 export function useRooms(params?: ListParams) {
   return useQuery({
     queryKey: ["storage", "rooms", params],
     queryFn: () => roomService.getAll(params),
+    refetchOnWindowFocus: true,
+    refetchOnMount: "always",
   })
 }
 
@@ -51,6 +53,8 @@ export function useZones(params?: FindZonesParams) {
   return useQuery({
     queryKey: ["storage", "zones", params],
     queryFn: () => zoneService.getAll(params),
+    refetchOnWindowFocus: true,
+    refetchOnMount: "always",
   })
 }
 
@@ -90,6 +94,8 @@ export function useRacks(params?: FindRacksParams) {
   return useQuery({
     queryKey: ["storage", "racks", params],
     queryFn: () => rackService.getAll(params),
+    refetchOnWindowFocus: true,
+    refetchOnMount: "always",
   })
 }
 
@@ -129,6 +135,8 @@ export function useShelves(params?: FindShelvesParams) {
   return useQuery({
     queryKey: ["storage", "shelves", params],
     queryFn: () => shelfService.getAll(params),
+    refetchOnWindowFocus: true,
+    refetchOnMount: "always",
   })
 }
 

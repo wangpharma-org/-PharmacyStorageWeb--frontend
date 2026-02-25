@@ -508,6 +508,7 @@ function ShelvesTab() {
           <TableRow>
             <TableHead>Name</TableHead>
             <TableHead>Medicine Code</TableHead>
+            <TableHead>Medicine Name</TableHead>
             <TableHead>Qty</TableHead>
             <TableHead>Capacity</TableHead>
             <TableHead>Rack</TableHead>
@@ -515,12 +516,13 @@ function ShelvesTab() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {isLoading ? <SkeletonRows cols={5} /> : rows.length === 0
-            ? <EmptyRow cols={5} label="shelves" />
+          {isLoading ? <SkeletonRows cols={7} /> : rows.length === 0
+            ? <EmptyRow cols={7} label="shelves" />
             : rows.map((s) => (
               <TableRow key={s.id}>
                 <TableCell className="font-medium">{s.name}</TableCell>
-                <TableCell className="font-mono text-xs">{s.medicineCode ?? "—"}</TableCell>
+                <TableCell className="font-medium">{s.medicineSnapshot.medicineCode ?? "—"}</TableCell>
+                <TableCell>{s.medicineSnapshot.medicineName_en ?? "—"}</TableCell>
                 <TableCell>{s.quantity}</TableCell>
                 <TableCell>{s.capacity ?? "—"}</TableCell>
                 <TableCell className="text-sm">{rackMap[s.rackId] ?? <span className="font-mono text-xs text-muted-foreground">{s.rackId}</span>}</TableCell>
