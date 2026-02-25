@@ -58,7 +58,12 @@ export function attachRefreshInterceptor(client: AxiosInstance): void {
       isRefreshing = true
 
       try {
-        const { data } = await client.post<{ accessToken: string }>(
+        const refreshClient = axios.create({
+          baseURL: client.defaults.baseURL,
+          timeout: client.defaults.timeout,
+        })
+        
+        const { data } = await refreshClient.post<{ accessToken: string }>(
           "/auth/refresh",
           { refreshToken },
         )
