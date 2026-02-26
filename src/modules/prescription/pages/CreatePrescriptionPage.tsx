@@ -22,6 +22,7 @@ const createPrescriptionSchema = z.object({
   gender: z.enum(["M", "F", "OTHER"]).optional(),
   phoneNumber: z.string().optional(),
   address: z.string().optional(),
+  roomId: z.string().optional(),
   items: z.array(z.object({
     medicineId: z.string().min(1, "กรุณาเลือกรายการยา"),
     medicineName_en: z.string().optional(),
@@ -47,6 +48,7 @@ export function CreatePrescriptionPage() {
       gender: undefined,
       phoneNumber: "",
       address: "",
+      roomId: "",
       items: []
     }
   })
@@ -64,6 +66,7 @@ export function CreatePrescriptionPage() {
         gender: data.gender || "OTHER",
         phoneNumber: data.phoneNumber || "",
         address: data.address || "",
+        roomId: data.roomId || "",
         items: data.items.map(item => ({
           medicineId: item.medicineId,
           medicineName_en: item.medicineName_en,

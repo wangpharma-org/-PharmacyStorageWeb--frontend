@@ -92,6 +92,7 @@ export interface CreatePrescriptionPayload {
   gender: string,
   phoneNumber: string,
   address: string,
+  roomId?: string,
   items: Array<{
     medicineId: string
     medicineName_en?: string

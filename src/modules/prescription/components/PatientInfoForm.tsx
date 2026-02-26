@@ -4,9 +4,11 @@ import { Field, FieldLabel, FieldError } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { Skeleton } from "@/components/ui/skeleton"
 import { UserIcon } from "lucide-react"
 import type { Control, FieldErrors } from "react-hook-form"
 import type { CreatePrescriptionPayload } from "../types/prescription.types"
+import { useRooms } from "../../storage/hooks/useStock"
 
 interface PatientInfoFormProps {
   control: Control<CreatePrescriptionPayload>
@@ -14,6 +16,49 @@ interface PatientInfoFormProps {
 }
 
 export function PatientInfoForm({ control, errors }: PatientInfoFormProps) {
+  const { data: roomsResponse, isLoading: isLoadingRooms, isError: isErrorRooms } = useRooms()
+  const rooms = roomsResponse?.data || []
+
+  const renderRoomSelect = (field: any) => {
+    if (isLoadingRooms) {
+      return <Skeleton className="h-10 w-full" />
+    }
+    
+    if (isErrorRooms) {
+      return (
+        <Select value={field.value} onValueChange={field.onChange}>
+          <SelectTrigger>
+            <SelectValue placeholder="ไม่สามารถโหลดข้อมูลห้องได้" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="fallback">ห้องอื่น ๆ</SelectItem>
+          </SelectContent>
+        </Select>
+      )
+    }
+
+    return (
+      <Select value={field.value} onValueChange={field.onChange}>
+        <SelectTrigger>
+          <SelectValue placeholder="เลือกห้องที่จัดยา" />
+        </SelectTrigger>
+        <SelectContent>
+          {rooms.map((room) => (
+            <SelectItem key={room.id} value={room.id}>
+              {room.name}
+            </SelectItem>
+          ))}
+          {rooms.length === 0 && (
+            <SelectItem value="no_rooms" disabled>
+              ไม่มีข้อมูลห้อง
+            </SelectItem>
+          )}
+        </SelectContent>
+      </Select>
+    )
+  }
+
+  
   return (
     <Card>
       <CardHeader>
@@ -166,6 +211,17 @@ export function PatientInfoForm({ control, errors }: PatientInfoFormProps) {
             )}
           />
           <FieldError>{errors.address?.message}</FieldError>
+        </Field>
+
+        {/* Room */}
+        <Field data-invalid={!!errors.roomId}>
+          <FieldLabel>ห้องที่จัดยา</FieldLabel>
+          <Controller
+            name="roomId"
+            control={control}
+            render={({ field }) => renderRoomSelect(field)}
+          />
+          <FieldError>{errors.roomId?.message}</FieldError>
         </Field>
       </CardContent>
     </Card>

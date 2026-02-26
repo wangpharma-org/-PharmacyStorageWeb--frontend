@@ -60,6 +60,11 @@ export function MedicineSearchCombobox({
     setSearchTerm(e.target.value)
   }
 
+  const handleClear = () => {
+    setSearchTerm("")
+    onValueChange("", undefined)
+  }
+
 //   console.log("MedicineSearchCombobox - medicines:", searchTerm)
 
   return (
@@ -73,6 +78,7 @@ export function MedicineSearchCombobox({
         placeholder={placeholder}
         value={searchTerm}
         onChange={handleInputChange}
+        onClear={handleClear}
         showClear={!!searchTerm}
       />
       <ComboboxContent>
