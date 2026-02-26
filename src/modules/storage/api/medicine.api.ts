@@ -1,4 +1,5 @@
-import { productApiClient } from "./clients"
+
+import { productApiClient } from "@/services/api"
 import type {
   Medicine,
   CreateMedicinePayload,

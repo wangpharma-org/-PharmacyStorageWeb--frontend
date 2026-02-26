@@ -67,6 +67,7 @@ export function attachRefreshInterceptor(client: AxiosInstance): void {
           "/auth/refresh",
           { refreshToken },
         )
+        
         const newToken = data.accessToken
         tokenService.setTokens(newToken, refreshToken)
         processQueue(newToken)

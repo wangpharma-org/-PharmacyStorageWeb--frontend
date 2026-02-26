@@ -1,4 +1,5 @@
-import { stockApiClient } from "./clients"
+
+import { stockApiClient } from "@/services/api"
 import type {
   Room, CreateRoomPayload, UpdateRoomPayload,
   Zone, CreateZonePayload, UpdateZonePayload,

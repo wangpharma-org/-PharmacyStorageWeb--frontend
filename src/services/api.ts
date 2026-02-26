@@ -15,7 +15,12 @@ function createServiceClient(baseURL: string) {
 }
 
 export const apiClient = createServiceClient(
-  import.meta.env.VITE_API_URL ?? "http://localhost:3000")
+  import.meta.env.VITE_API_URL ?? "http://localhost:3000"
+)
+
+export const prescriptionApiClient = createServiceClient(
+  import.meta.env.VITE_PRESCRIPTION_API_URL ?? "http://localhost:3001",
+)
 
 export const productApiClient = createServiceClient(
   import.meta.env.VITE_PRODUCT_API_URL ?? "http://localhost:3002",
