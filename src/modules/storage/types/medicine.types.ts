@@ -41,5 +41,6 @@ export interface FindMedicinesParams {
   page?: number
   limit?: number
   medicineCode?: string
-  medicineName?: string
+  medicineName_en?: string
+  medicineName_th?: string
 }

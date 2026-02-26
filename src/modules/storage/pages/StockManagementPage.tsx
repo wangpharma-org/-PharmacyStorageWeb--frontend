@@ -521,8 +521,8 @@ function ShelvesTab() {
             : rows.map((s) => (
               <TableRow key={s.id}>
                 <TableCell className="font-medium">{s.name}</TableCell>
-                <TableCell className="font-medium">{s.medicineSnapshot.medicineCode ?? "—"}</TableCell>
-                <TableCell>{s.medicineSnapshot.medicineName_en ?? "—"}</TableCell>
+                <TableCell className="font-medium">{s.medicineSnapshot?.medicineCode ?? "—"}</TableCell>
+                <TableCell>{s.medicineSnapshot?.medicineName_en ?? "—"}</TableCell>
                 <TableCell>{s.quantity}</TableCell>
                 <TableCell>{s.capacity ?? "—"}</TableCell>
                 <TableCell className="text-sm">{rackMap[s.rackId] ?? <span className="font-mono text-xs text-muted-foreground">{s.rackId}</span>}</TableCell>

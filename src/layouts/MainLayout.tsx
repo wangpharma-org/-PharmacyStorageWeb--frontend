@@ -14,6 +14,7 @@ import { useAuth } from "@/hooks/useAuth"
 
 const navItems = [
   { to: "/app/dashboard", label: "Dashboard", icon: LayoutDashboardIcon },
+  { to: "/app/prescriptions", label: "Prescriptions", icon: ShieldCheckIcon },
   { to: "/app/storage", label: "Storage", icon: WarehouseIcon },
   { to: "/app/admin/users", label: "Users", icon: UsersIcon },
   { to: "/app/admin/roles", label: "Roles", icon: ShieldIcon },
