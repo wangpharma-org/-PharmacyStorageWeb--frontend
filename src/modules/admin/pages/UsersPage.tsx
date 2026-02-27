@@ -33,6 +33,7 @@ import { useDebounce } from "@/hooks/useDebounce"
 import { useApproveUser, useDeapproveUser, useSoftDeleteUser, useUsers } from "../hooks/useUsers"
 import { InviteUserModal } from "../components/InviteUserModal"
 import { EditUserModal } from "../components/EditUserModal"
+import { Pagination } from "../../prescription/components/Pagination"
 import type { AdminUser } from "../types/admin.types"
 
 function UserAvatar({ user }: { user: AdminUser }) {
@@ -74,11 +75,15 @@ export function UsersPage() {
   const [deleteTarget, setDeleteTarget] = useState<AdminUser | null>(null)
   const [editTarget, setEditTarget] = useState<AdminUser | null>(null)
   const [inviteOpen, setInviteOpen] = useState(false)
+  const [page, setPage] = useState(1)
+  const [limit, setLimit] = useState(20)
 
   const debouncedSearch = useDebounce(search)
-  const { data: users, isLoading, isError } = useUsers(
-    debouncedSearch ? { search: debouncedSearch } : undefined,
-  )
+  const { data: users, isLoading, isError } = useUsers({
+    ...(debouncedSearch && { search: debouncedSearch }),
+    page,
+    limit,
+  })
   const approveUser = useApproveUser()
   const deapproveUser = useDeapproveUser()
   const softDeleteUser = useSoftDeleteUser()
@@ -89,6 +94,15 @@ export function UsersPage() {
     if (!deleteTarget) return
     softDeleteUser.mutate(deleteTarget.id)
     setDeleteTarget(null)
+  }
+
+  function handlePageChange(newPage: number) {
+    setPage(newPage)
+  }
+
+  function handleItemsPerPageChange(newLimit: number) {
+    setLimit(newLimit)
+    setPage(1) // Reset to first page when changing items per page
   }
 
   return (
@@ -249,11 +263,16 @@ export function UsersPage() {
         </Table>
       </div>
 
-      {/* Footer count */}
+      {/* Pagination */}
       {!isLoading && !isError && users && users.meta.total > 0 && (
-        <p className="text-xs text-muted-foreground">
-          Showing {filtered.length} of {users.meta.total} users
-        </p>
+        <Pagination
+          currentPage={users.meta.page}
+          totalPages={users.meta.totalPages}
+          totalItems={users.meta.total}
+          itemsPerPage={users.meta.limit}
+          onPageChange={handlePageChange}
+          onItemsPerPageChange={handleItemsPerPageChange}
+        />
       )}
 
       {/* Invite user modal */}
