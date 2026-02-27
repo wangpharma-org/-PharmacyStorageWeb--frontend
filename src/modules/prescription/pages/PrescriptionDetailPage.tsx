@@ -12,8 +12,7 @@ import {
   CheckIcon, 
   TruckIcon,
   AlertCircleIcon,
-  FileTextIcon,
-  EditIcon
+  FileTextIcon
 } from "lucide-react"
 import { 
   usePrescriptionById, 
@@ -23,7 +22,6 @@ import {
   useCompletePrescription
 } from "../hooks/usePrescriptions"
 import { PatientInfoCard } from "../components/PatientInfoCard"
-import { StatusTimeline } from "../components/StatusTimeline"
 import { PrescriptionItemsTable } from "../components/PrescriptionItemsTable"
 import { StatusBadge } from "../components/StatusBadge"
 import { PrescriptionStatus } from "../types/prescription.types"
@@ -264,10 +262,10 @@ export function PrescriptionDetailPage() {
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
           {/* Patient Information */}
-          {/* <PatientInfoCard 
+          <PatientInfoCard 
             patient={prescription}
             showFullDetails={true}
-          /> */}
+          />
 
           {/* Prescription Items */}
           <Card>
@@ -294,11 +292,6 @@ export function PrescriptionDetailPage() {
 
         {/* Sidebar */}
         <div className="space-y-6">
-          {/* Status Timeline */}
-          {/* <StatusTimeline
-            timeline={prescription.currentTimeline}
-            currentStatus={prescription.status}
-          /> */}
 
           {/* Summary Stats */}
           <Card>

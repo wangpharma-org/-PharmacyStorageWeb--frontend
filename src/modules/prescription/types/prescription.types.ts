@@ -17,8 +17,8 @@ export type PrescriptionStatus = typeof PrescriptionStatus[keyof typeof Prescrip
 export const ItemReserveStatus = {
   PENDING: "PENDING",
   RESERVED: "RESERVED", 
-  PARTIAL: "PARTIAL",
   FAILED: "FAILED",
+  COMPLETED: "COMPLETED",
   CANCELLED: "CANCELLED"
 } as const
 
@@ -39,14 +39,14 @@ export interface PatientInfo {
 // Individual Medicine Item in Prescription
 export interface PrescriptionItem {
   id: string
-  productId: string
-  productName: string
+  medicineCode: string
+  medicineName: string
   quantity: number
   unit: string
-  reserveStatus: ItemReserveStatus
+  status: ItemReserveStatus
   reservedQuantity?: number
   failureReason?: string
-  notes?: string
+  instructions?: string
 }
 
 // Status Timeline Entry
