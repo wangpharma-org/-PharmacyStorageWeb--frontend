@@ -35,13 +35,11 @@ export function PrescriptionItemsTable({
   }
 
   const getItemIcon = (item: PrescriptionItem) => {
-    switch (item.reserveStatus) {
+    switch (item.status) {
       case "RESERVED":
         return <CheckCircleIcon className="size-4 text-green-600" />
       case "FAILED":
-        return <AlertCircleIcon className="size-4 text-red-600" />
-      case "PARTIAL":
-        return <InfoIcon className="size-4 text-orange-600" />  
+        return <AlertCircleIcon className="size-4 text-red-600" />  
       default:
         return null
     }
@@ -83,7 +81,7 @@ export function PrescriptionItemsTable({
                   <div>
                     <div className="font-medium">{item.medicineName}</div>
                     <div className="text-xs text-muted-foreground font-mono">
-                      {item.productId}
+                      {item.medicineCode}
                     </div>
                   </div>
                 </div>
@@ -94,7 +92,7 @@ export function PrescriptionItemsTable({
               </TableCell>
 
               <TableCell>
-                <StatusBadge status={item.reserveStatus} />
+                <StatusBadge status={item.status} />
               </TableCell>
 
               <TableCell>
@@ -114,7 +112,7 @@ export function PrescriptionItemsTable({
               {showActions && (
                 <TableCell>
                   <div className="flex items-center gap-1">
-                    {item.reserveStatus === "FAILED" && onItemAction && (
+                    {item.status === "FAILED" && onItemAction && (
                       <Button
                         size="sm"
                         variant="outline"
@@ -141,15 +139,11 @@ export function PrescriptionItemsTable({
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1 text-green-600">
               <CheckCircleIcon className="size-3" />
-              จองแล้ว: {items.filter(i => i.reserveStatus === "RESERVED").length}
-            </span>
-            <span className="flex items-center gap-1 text-orange-600">
-              <InfoIcon className="size-3" />
-              บางส่วน: {items.filter(i => i.reserveStatus === "PARTIAL").length}
+              จองแล้ว: {items.filter(i => i.status === "RESERVED").length}
             </span>
             <span className="flex items-center gap-1 text-red-600">
               <AlertCircleIcon className="size-3" />
-              ไม่สำเร็จ: {items.filter(i => i.reserveStatus === "FAILED").length}
+              ไม่สำเร็จ: {items.filter(i => i.status === "FAILED").length}
             </span>
           </div>
         </div>

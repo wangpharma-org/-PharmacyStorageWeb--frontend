@@ -65,8 +65,6 @@ export function MedicineSearchCombobox({
     onValueChange("", undefined)
   }
 
-//   console.log("MedicineSearchCombobox - medicines:", searchTerm)
-
   return (
     <Combobox 
       items={items}

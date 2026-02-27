@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { UserIcon, PhoneIcon, MapPinIcon, CalendarIcon } from "lucide-react"
-import type { PatientInfo } from "../types/prescription.types"
+import type { Prescription } from "../types/prescription.types"
 
 interface PatientInfoCardProps {
-  patient: PatientInfo
+  patient: Prescription
   className?: string
   showFullDetails?: boolean
 }
@@ -47,9 +47,9 @@ export function PatientInfoCard({
               {patient.patientName}
             </h3>
             <div className="flex items-center gap-2">
-              {patient.patientId && (
+              {patient.patientCode && (
                 <span className="font-mono text-xs text-muted-foreground">
-                  ID: {patient.patientId}
+                  Code: {patient.patientCode}
                 </span>
               )}
               {patient.hn && (
@@ -66,15 +66,15 @@ export function PatientInfoCard({
           </div>
           
           <div className="flex items-center gap-2">
-            {patient.patientAge && (
+            {patient.age && (
               <Badge variant="outline" className="text-xs">
                 <CalendarIcon className="mr-1 size-3" />
-                {patient.patientAge} ปี
+                {patient.age} ปี
               </Badge>
             )}
-            {patient.patientGender && (
-              <Badge variant={getGenderVariant(patient.patientGender)} className="text-xs">
-                {getGenderLabel(patient.patientGender)}
+            {patient.gender && (
+              <Badge variant={getGenderVariant(patient.gender)} className="text-xs">
+                {getGenderLabel(patient.gender)}
               </Badge>
             )}
           </div>
@@ -83,18 +83,18 @@ export function PatientInfoCard({
         {showFullDetails && (
           <>
             {/* Contact Information */}
-            {patient.patientPhone && (
+            {patient.phoneNumber && (
               <div className="flex items-center gap-2 text-sm">
                 <PhoneIcon className="size-4 text-muted-foreground" />
-                <span>{patient.patientPhone}</span>
+                <span>{patient.phoneNumber}</span>
               </div>
             )}
 
             {/* Address */}
-            {patient.patientAddress && (
+            {patient.address && (
               <div className="flex items-start gap-2 text-sm">
                 <MapPinIcon className="mt-0.5 size-4 text-muted-foreground" />
-                <span className="flex-1">{patient.patientAddress}</span>
+                <span className="flex-1">{patient.address}</span>
               </div>
             )}
           </>
@@ -103,17 +103,17 @@ export function PatientInfoCard({
         {/* Compact view for lists */}
         {!showFullDetails && (
           <div className="flex items-center gap-4 text-xs text-muted-foreground">
-            {patient.patientPhone && (
+            {patient.phoneNumber && (
               <span className="flex items-center gap-1">
                 <PhoneIcon className="size-3" />
-                {patient.patientPhone}
+                {patient.phoneNumber}
               </span>
             )}
-            {patient.patientAge && (
-              <span>{patient.patientAge} ปี</span>
+            {patient.age && (
+              <span>{patient.age} ปี</span>
             )}
-           {patient.patientGender && (
-              <span>{getGenderLabel(patient.patientGender)}</span>
+           {patient.gender && (
+              <span>{getGenderLabel(patient.gender)}</span>
             )}
           </div>
         )}
