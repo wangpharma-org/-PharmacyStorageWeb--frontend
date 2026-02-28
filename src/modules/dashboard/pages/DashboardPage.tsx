@@ -1,33 +1,33 @@
-import { Link } from "react-router-dom"
-import { ClipboardListIcon, WarehouseIcon, PillIcon, ArrowRightIcon } from "lucide-react"
+// import { Link } from "react-router-dom"
+// import { ClipboardListIcon, WarehouseIcon, PillIcon, ArrowRightIcon } from "lucide-react"
 import { useAuth } from "@/hooks/useAuth"
 
-const dashboards = [
-  {
-    to: "/app/dashboard/prescription",
-    label: "Prescription Dashboard",
-    description: "Track prescriptions, dispensing status and patient history",
-    icon: ClipboardListIcon,
-    color: "text-blue-500",
-    bg: "bg-blue-500/10",
-  },
-  {
-    to: "/app/dashboard/stock",
-    label: "Stock Dashboard",
-    description: "Monitor rooms, zones, racks and available shelf space",
-    icon: WarehouseIcon,
-    color: "text-emerald-500",
-    bg: "bg-emerald-500/10",
-  },
-  {
-    to: "/app/dashboard/product",
-    label: "Product Dashboard",
-    description: "Browse medicine catalogue and track inventory levels",
-    icon: PillIcon,
-    color: "text-violet-500",
-    bg: "bg-violet-500/10",
-  },
-]
+// const dashboards = [
+//   {
+//     to: "/app/dashboard/prescription",
+//     label: "Prescription Dashboard",
+//     description: "Track prescriptions, dispensing status and patient history",
+//     icon: ClipboardListIcon,
+//     color: "text-blue-500",
+//     bg: "bg-blue-500/10",
+//   },
+//   {
+//     to: "/app/dashboard/stock",
+//     label: "Stock Dashboard",
+//     description: "Monitor rooms, zones, racks and available shelf space",
+//     icon: WarehouseIcon,
+//     color: "text-emerald-500",
+//     bg: "bg-emerald-500/10",
+//   },
+//   {
+//     to: "/app/dashboard/product",
+//     label: "Product Dashboard",
+//     description: "Browse medicine catalogue and track inventory levels",
+//     icon: PillIcon,
+//     color: "text-violet-500",
+//     bg: "bg-violet-500/10",
+//   },
+// ]
 
 export function DashboardPage() {
   const { user } = useAuth()
@@ -44,7 +44,7 @@ export function DashboardPage() {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
-        {dashboards.map(({ to, label, description, icon: Icon, color, bg }) => (
+        {/* {dashboards.map(({ to, label, description, icon: Icon, color, bg }) => (
           <Link
             key={to}
             to={to}
@@ -61,7 +61,7 @@ export function DashboardPage() {
               <p className="mt-1 text-sm text-muted-foreground">{description}</p>
             </div>
           </Link>
-        ))}
+        ))} */}
       </div>
     </div>
   )
