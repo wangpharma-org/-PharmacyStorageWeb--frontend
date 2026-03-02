@@ -8,8 +8,11 @@ import type {
   RetryReservePayload,
   ProductInfo,
   FindProductsParams,
-  PrescriptionStats
+  PrescriptionStats,
+  PrescriptionRoomSnapshot,
+  PrescriptionMedicineSnapshot
 } from "../types/prescription.types"
+import type { ListParams, PaginatedResponse } from "@/modules/storage/types/stock.types"
 
 export const prescriptionApi = {
   // Get all prescriptions with filters
@@ -64,5 +67,11 @@ export const prescriptionApi = {
 
   // Update item reserve status (for real-time updates)
   updateItemStatus: (prescriptionId: string, itemId: string, status: any) =>
-    prescriptionApiClient.patch(`/prescriptions/${prescriptionId}/items/${itemId}`, { status })
+    prescriptionApiClient.patch(`/prescriptions/${prescriptionId}/items/${itemId}`, { status }),
+
+  getRoomSnapshotAll: (params?: ListParams) =>
+    prescriptionApiClient.get<PaginatedResponse<PrescriptionRoomSnapshot>>("/stock-snapshots", { params }),
+
+  getMedicineSnapshotAll: (params?: ListParams) =>
+    prescriptionApiClient.get<PaginatedResponse<PrescriptionMedicineSnapshot>>("/medicine-snapshots", { params }),
 }

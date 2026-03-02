@@ -1,3 +1,5 @@
+import { get } from "react-hook-form"
+import type { ListParams } from "../storage/types/stock.types"
 import { prescriptionApi } from "./api/prescription.api"
 import type {
   CreatePrescriptionPayload,
@@ -6,6 +8,7 @@ import type {
   RetryReservePayload,
   FindProductsParams
 } from "./types/prescription.types"
+import type { FindMedicinesParams } from "../storage/types/medicine.types"
 
 export const prescriptionService = {
   // Get all prescriptions with pagination and filters  
@@ -76,6 +79,16 @@ export const prescriptionService = {
   // Complete prescription
   complete: async (id: string, completedBy?: string) => {
     const { data } = await prescriptionApi.complete(id, completedBy)
+    return data
+  },
+
+  getRoomSnapshotAll: async (params?: ListParams) => {
+    const { data } = await prescriptionApi.getRoomSnapshotAll(params)
+    return data
+  },
+
+  getMedicineSnapshotAll: async (params?: FindMedicinesParams) => {
+    const { data } = await prescriptionApi.getMedicineSnapshotAll(params)
     return data
   }
 }

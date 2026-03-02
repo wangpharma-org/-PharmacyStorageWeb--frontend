@@ -7,6 +7,8 @@ import type {
   RetryReservePayload,
   FindProductsParams
 } from "../types/prescription.types"
+import type { ListParams } from "@/modules/storage/types/stock.types"
+import type { FindMedicinesParams } from "@/modules/storage/types/medicine.types"
 
 // Query key factory for consistent cache management
 export const prescriptionKeys = {
@@ -198,5 +200,23 @@ export function useCompletePrescription() {
       void queryClient.invalidateQueries({ queryKey: prescriptionKeys.lists() })
       void queryClient.invalidateQueries({ queryKey: prescriptionKeys.stats() })
     },
+  })
+}
+
+export function usePrescriptionRoomSnapshots(params?: ListParams) {
+  return useQuery({
+    queryKey: ["storage", "rooms", params],
+    queryFn: () => prescriptionService.getRoomSnapshotAll(params),
+    refetchOnWindowFocus: true,
+    refetchOnMount: "always",
+  })
+}
+
+export function usePrescriptionMedicineSnapshots(params?: FindMedicinesParams) {
+  return useQuery({
+    queryKey: ["storage", "medicines", params],
+    queryFn: () => prescriptionService.getMedicineSnapshotAll(params),
+    refetchOnWindowFocus: true,
+    refetchOnMount: "always",
   })
 }

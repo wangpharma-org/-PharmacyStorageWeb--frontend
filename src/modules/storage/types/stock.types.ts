@@ -20,6 +20,12 @@ export interface Room {
   updatedAt: string
 }
 
+export interface MedicineRoomSnapshot {
+  roomId: string
+  roomName: string
+  description: string | null
+}
+
 export interface CreateRoomPayload {
   name: string
   description?: string

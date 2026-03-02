@@ -5,7 +5,7 @@ import type {
   UpdateMedicinePayload,
   FindMedicinesParams,
 } from "./types/medicine.types"
-import type { PaginatedResponse } from "./types/stock.types"
+import type { ListParams, MedicineRoomSnapshot, PaginatedResponse } from "./types/stock.types"
 
 export const medicineService = {
   getAll: async (params?: FindMedicinesParams): Promise<PaginatedResponse<Medicine>> => {
@@ -31,4 +31,9 @@ export const medicineService = {
   remove: async (id: string): Promise<void> => {
     await medicineApi.remove(id)
   },
+
+  getRoomSnapshotAll: async (params?: ListParams): Promise<PaginatedResponse<MedicineRoomSnapshot>> => {
+    const { data } = await medicineApi.getRoomSnapshotAll(params)
+    return data
+  }
 }

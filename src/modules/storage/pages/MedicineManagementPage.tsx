@@ -29,8 +29,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { useDebounce } from "@/hooks/useDebounce"
-import { useMedicines, useCreateMedicine, useUpdateMedicine, useDeleteMedicine } from "../hooks/useMedicines"
-import { useRooms } from "../hooks/useStock"
+import { useMedicines, useCreateMedicine, useUpdateMedicine, useDeleteMedicine, useMedicineRoomSnapshots } from "../hooks/useMedicines"
 import type { Medicine } from "../types/medicine.types"
 import {
   PageHeader,
@@ -63,14 +62,19 @@ export function MedicineManagementPage() {
     debouncedSearch ? { medicineCode: debouncedSearch } : { limit: 100 },
   )
 
-  const { data: roomsData } = useRooms({ limit: 100 })
+  const { data: roomsData } = useMedicineRoomSnapshots({ limit: 100 })
   const createMedicine = useCreateMedicine()
   const updateMedicine = useUpdateMedicine()
   const deleteMedicine = useDeleteMedicine()
 
   const rooms = roomsData?.data ?? []
   const roomMap = useMemo(
-    () => Object.fromEntries(rooms.map((r) => [r.id, r.name])),
+    () => Object.fromEntries(rooms.map((r) => [r.roomId, r.roomName])),
+    [rooms],
+  )
+  
+  const roomsForForm = useMemo(
+    () => rooms.map((r) => ({ id: r.roomId, name: r.roomName })),
     [rooms],
   )
 
@@ -130,7 +134,7 @@ export function MedicineManagementPage() {
     )
   }
 
-  const formProps = { code, setCode, nameEn, setNameEn, nameTh, setNameTh, methodEn, setMethodEn, methodTh, setMethodTh, note, setNote, roomId, setRoomId, rooms }
+  const formProps = { code, setCode, nameEn, setNameEn, nameTh, setNameTh, methodEn, setMethodEn, methodTh, setMethodTh, note, setNote, roomId, setRoomId, rooms: roomsForForm }
 
   return (
     <div className="space-y-6">
@@ -161,7 +165,7 @@ export function MedicineManagementPage() {
           <SelectContent>
             <SelectItem value="__all__">All rooms</SelectItem>
             {rooms.map((r) => (
-              <SelectItem key={r.id} value={r.id}>{r.name}</SelectItem>
+              <SelectItem key={r.roomId} value={r.roomId}>{r.roomName}</SelectItem>
             ))}
           </SelectContent>
         </Select>

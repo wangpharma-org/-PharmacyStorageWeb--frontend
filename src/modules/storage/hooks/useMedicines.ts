@@ -5,6 +5,7 @@ import type {
   FindMedicinesParams,
   UpdateMedicinePayload,
 } from "../types/medicine.types"
+import type { ListParams } from "../types/stock.types"
 
 export function useMedicines(params?: FindMedicinesParams) {
   return useQuery({
@@ -49,5 +50,15 @@ export function useDeleteMedicine() {
     onSuccess: () => {
       void queryClient.invalidateQueries({ queryKey: ["storage", "medicines"] })
     },
+  })
+}
+
+
+export function useMedicineRoomSnapshots(params?: ListParams) {
+  return useQuery({
+    queryKey: ["storage", "rooms", params],
+    queryFn: () => medicineService.getRoomSnapshotAll(params),
+    refetchOnWindowFocus: true,
+    refetchOnMount: "always",
   })
 }

@@ -8,7 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { UserIcon } from "lucide-react"
 import type { Control, FieldErrors } from "react-hook-form"
 import type { CreatePrescriptionPayload } from "../types/prescription.types"
-import { useRooms } from "../../storage/hooks/useStock"
+import { usePrescriptionRoomSnapshots } from "../hooks/usePrescriptions"
 
 interface PatientInfoFormProps {
   control: Control<CreatePrescriptionPayload>
@@ -16,7 +16,7 @@ interface PatientInfoFormProps {
 }
 
 export function PatientInfoForm({ control, errors }: PatientInfoFormProps) {
-  const { data: roomsResponse, isLoading: isLoadingRooms, isError: isErrorRooms } = useRooms()
+  const { data: roomsResponse, isLoading: isLoadingRooms, isError: isErrorRooms } = usePrescriptionRoomSnapshots()
   const rooms = roomsResponse?.data || []
 
   const renderRoomSelect = (field: any) => {
@@ -44,8 +44,8 @@ export function PatientInfoForm({ control, errors }: PatientInfoFormProps) {
         </SelectTrigger>
         <SelectContent>
           {rooms.map((room) => (
-            <SelectItem key={room.id} value={room.id}>
-              {room.name}
+            <SelectItem key={room.roomId} value={room.roomId}>
+              {room.roomName}
             </SelectItem>
           ))}
           {rooms.length === 0 && (

@@ -10,12 +10,12 @@ import {
   ComboboxList,
 } from "@/components/ui/combobox"
 import { useDebounce } from "@/hooks/useDebounce"
-import { useMedicines } from "@/modules/storage/hooks/useMedicines"
-import type { Medicine } from "@/modules/storage/types/medicine.types"
+import { usePrescriptionMedicineSnapshots } from "../hooks/usePrescriptions"
+import type { PrescriptionMedicineSnapshot } from "../types/prescription.types"
 
 interface MedicineSearchComboboxProps {
   value?: string | null
-  onValueChange: (medicineId: string, medicine?: Medicine) => void
+  onValueChange: (medicineId: string, medicine?: PrescriptionMedicineSnapshot) => void
   placeholder?: string
   className?: string
 }
@@ -29,7 +29,7 @@ export function MedicineSearchCombobox({
   const [searchTerm, setSearchTerm] = useState("")
   const debouncedSearch = useDebounce(searchTerm, 300)
 
-  const { data: medicineResponse, isLoading } = useMedicines({
+  const { data: medicineResponse, isLoading } = usePrescriptionMedicineSnapshots({
     medicineName_en: debouncedSearch,
     limit: 20
   })

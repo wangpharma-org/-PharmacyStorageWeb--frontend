@@ -6,7 +6,7 @@ import type {
   UpdateMedicinePayload,
   FindMedicinesParams,
 } from "../types/medicine.types"
-import type { PaginatedResponse } from "../types/stock.types"
+import type { ListParams, MedicineRoomSnapshot, PaginatedResponse } from "../types/stock.types"
 
 export const medicineApi = {
   getAll: (params?: FindMedicinesParams) =>
@@ -23,4 +23,7 @@ export const medicineApi = {
 
   remove: (id: string) =>
     productApiClient.delete<void>(`/medicines/${id}`),
+
+  getRoomSnapshotAll: (params?: ListParams) =>
+    productApiClient.get<PaginatedResponse<MedicineRoomSnapshot>>("/stock-snapshots", { params }),
 }

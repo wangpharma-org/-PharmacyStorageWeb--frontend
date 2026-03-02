@@ -167,3 +167,16 @@ export interface PrescriptionStats {
   problematicCount: number
   averageProcessingTime?: number
 }
+
+export interface PrescriptionRoomSnapshot {
+  roomId: string
+  roomName: string
+  description: string | null
+}
+
+export interface PrescriptionMedicineSnapshot {
+  id: string
+  medicineCode: string
+  medicineName_en: string
+  medicineName_th: string
+}
