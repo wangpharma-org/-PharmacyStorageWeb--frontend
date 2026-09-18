@@ -86,7 +86,8 @@ src/
 **Routing (React Router v7):**
 - `src/app/router.tsx` — `createBrowserRouter` config; add new routes here
 - `src/layouts/MainLayout.tsx` — authenticated app layout with `<Outlet />`
-- `src/layouts/AuthLayout.tsx` — auth pages layout with `<Outlet />`
+- `src/layouts/RootLayout.tsx` — wrapper ชั้นนอกสุด (`min-h-screen` + `<Outlet />`)
+  หน้า auth ใช้ตัวนี้ตรง ๆ ไม่มี `AuthLayout.tsx` แยก
 - `src/modules/<module>/pages/` — page components for that feature
 - `src/main.tsx` — mounts `<RouterProvider router={router} />`
 
