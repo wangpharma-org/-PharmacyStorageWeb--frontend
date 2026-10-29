@@ -1,3 +1,9 @@
+---
+name: new-form
+description: Create a validated form with react-hook-form + zod and shadcn/ui Field components. Use for any new form in a module.
+argument-hint: "<module>/<FormName>"
+---
+
 # Skill: new-form
 
 Create a validated form using `react-hook-form` + shadcn/ui Field components.

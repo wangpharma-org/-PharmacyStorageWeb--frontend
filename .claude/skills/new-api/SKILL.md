@@ -1,3 +1,9 @@
+---
+name: new-api
+description: Create the API layer file for a module in src/modules/<module>/. Use when a module needs endpoints wired to the backend.
+argument-hint: "<module>"
+---
+
 # Skill: new-api
 
 Create the API layer file for a module.

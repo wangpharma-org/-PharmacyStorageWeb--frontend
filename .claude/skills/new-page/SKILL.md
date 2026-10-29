@@ -1,3 +1,9 @@
+---
+name: new-page
+description: Add a new page component inside the correct module and register its route.
+argument-hint: "<module>/<PageName>"
+---
+
 # Skill: new-page
 
 Add a new page component inside the correct module.

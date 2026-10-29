@@ -1,3 +1,9 @@
+---
+name: new-component
+description: Create a React component — shared UI or module-scoped — with the project's file layout and styling rules.
+argument-hint: "<location>/<ComponentName>"
+---
+
 # Skill: new-component
 
 Create a new React component — either a shared UI component or a module-scoped component.

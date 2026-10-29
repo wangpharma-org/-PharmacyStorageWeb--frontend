@@ -1,3 +1,9 @@
+---
+name: new-service
+description: Create a service layer file — module service (src/modules/<module>/<module>.service.ts) or global service.
+argument-hint: "<module>"
+---
+
 # Skill: new-service
 
 Create a service layer file — either a module service or a global service.

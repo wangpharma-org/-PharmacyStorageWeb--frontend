@@ -1,3 +1,9 @@
+---
+name: add-shadcn
+description: Add a shadcn/ui component to the PharmacyStorage web app following project conventions. Use when a UI needs a shadcn component that is not installed yet.
+argument-hint: "<component-name>"
+---
+
 # Skill: add-shadcn
 
 Add a shadcn/ui component to the project.

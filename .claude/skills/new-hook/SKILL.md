@@ -1,3 +1,9 @@
+---
+name: new-hook
+description: Create a custom React hook — module-scoped (src/modules/<module>/hooks) or global — for data fetching or utilities.
+argument-hint: "<module>/use<Name>"
+---
+
 # Skill: new-hook
 
 Create a custom React hook — either a module-scoped hook or a global hook.
