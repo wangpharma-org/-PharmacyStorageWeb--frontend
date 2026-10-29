@@ -1,3 +1,9 @@
+---
+name: new-module
+description: Scaffold a complete feature module under src/modules/<name>/ (api, components, hooks, pages, types and the files listed in the skill). Use when starting a new feature area.
+argument-hint: "<module-name>"
+---
+
 # Skill: new-module
 
 Scaffold a complete feature module under `src/modules/<name>/`.
